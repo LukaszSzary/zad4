@@ -4,8 +4,12 @@ async function loadAndDisplayFavorites() {
     try {
         await new Promise(resolve => {
             const checkReady = () => {
-                if (NewsDB.ready) resolve();
-                else setTimeout(checkReady, 100);
+                if (NewsDB.ready) {
+                    resolve();
+                }
+                else {
+                    setTimeout(checkReady, 100);
+                }
             };
             checkReady();
         });
@@ -19,8 +23,7 @@ async function loadAndDisplayFavorites() {
 
 const printArticles = (articles) => {
     articles.forEach((item) => {
-        console.log(item);
-    const div = document.createElement("div");
+      const div = document.createElement("div");
     div.classList.add('article');
     div.innerHTML = `
      <h3>${item.title}</h3>
