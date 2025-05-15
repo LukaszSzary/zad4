@@ -33,7 +33,7 @@ a{
     
 }
 
-.article{
+.book{
     margin-top:20px
 }
 
@@ -46,6 +46,6 @@ a{
     margin: 0 0 0 10px;
 }
 
-#submit-phrase{
+#submit-author{
     margin: 0 0 0 10px;
 }

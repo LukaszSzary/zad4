@@ -1,14 +1,14 @@
-const NewsDB = {
+const BooksDB = {
     addToDB: null,
     getAll: null,
     ready: false
 };
 
-const dbName = 'NewsDB';
+const dbName = 'BooksDB';
 const dbVersion = 2;
 const request = indexedDB.open(dbName, dbVersion);
 
-const newsObjectStoreKey = 'News';
+const newsObjectStoreKey = 'Books';
 request.onupgradeneeded = (event) => {
     const db = event.target.result;
     if (!db.objectStoreNames.contains(newsObjectStoreKey)) {
@@ -19,14 +19,14 @@ request.onupgradeneeded = (event) => {
 
 request.onsuccess = (event) => {
     const db = event.target.result;
-    NewsDB.addToDB = (news) => {
+    BooksDB.addToDB = (news) => {
         console.log(`adding to db${news}`);
         const transactionType = 'readwrite';
         const store = db.transaction(newsObjectStoreKey, transactionType).objectStore(newsObjectStoreKey);
         store.add(news);        
     }
 
-    NewsDB.getAll = () => {
+    BooksDB.getAll = () => {
         return new Promise((resolve, reject) => {
         const transactionType = 'readonly';
         const transaction = db.transaction(newsObjectStoreKey, transactionType);
@@ -37,6 +37,6 @@ request.onsuccess = (event) => {
         request.onerror = (err) => reject(err);
         });
     }    
-    NewsDB.ready = true;
+    BooksDB.ready = true;
      console.log("Database initialized");
 };

@@ -4,7 +4,7 @@ async function loadAndDisplayFavorites() {
     try {
         await new Promise(resolve => {
             const checkReady = () => {
-                if (NewsDB.ready) {
+                if (BooksDB.ready) {
                     resolve();
                 }
                 else {
@@ -14,21 +14,22 @@ async function loadAndDisplayFavorites() {
             checkReady();
         });
         
-        const favNews = await NewsDB.getAll();
-        printArticles(favNews);
+        const favBooks = await BooksDB.getAll();
+        printBooks(favBooks);
     } catch (error) {
         console.error("Error loading favorites:", error);
     }
 }
 
-const printArticles = (articles) => {
-    articles.forEach((item) => {
-      const div = document.createElement("div");
-    div.classList.add('article');
+const printBooks = (books) => {
+    console.log(books);
+    books.forEach((item) => {
+    const div = document.createElement("div");
+    div.classList.add('book');
     div.innerHTML = `
      <h3>${item.title}</h3>
-     <p>${item.description}</p>
-     <a href="${item.url}">${item.url}</a>
+     <p>${item.author_name}</p>
+     <button class="save-btn">Mark as favourite</button>
     `;
     container.appendChild(div);
     });
