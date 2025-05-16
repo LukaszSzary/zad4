@@ -27,7 +27,7 @@ container.addEventListener('click', (e) => {
         const bookDiv = e.target.closest('div');
         BooksDB.addToDB({
             title: bookDiv.querySelector('h3').textContent,
-            description: bookDiv.querySelector('p').textContent,
+            author_name: bookDiv.querySelector('p').textContent,
         });
     }
 });
