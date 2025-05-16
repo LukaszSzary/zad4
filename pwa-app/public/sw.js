@@ -5,6 +5,7 @@ self.addEventListener('install', function(event) {
         caches.open('my-cache').then(function(cache) {
             return cache.addAll([
                 './',
+                './grass.jpg',
                 './index.html',
                 './style.css',
                 './subpages/favourite.html',
