@@ -22,14 +22,13 @@ async function loadAndDisplayFavorites() {
 }
 
 const printBooks = (books) => {
-    console.log(books);
+//    console.log(books);
     books.forEach((item) => {
     const div = document.createElement("div");
     div.classList.add('book');
     div.innerHTML = `
      <h3>${item.title}</h3>
      <p>${item.author_name}</p>
-     <button class="save-btn">Mark as favourite</button>
     `;
     container.appendChild(div);
     });

@@ -14,7 +14,7 @@ const searchBooks = async (author) => {
             throw new Error(errorMessage);
         }
         const data = await response.json();
-        console.log(data);
+//        console.log(data);
         printBooks(data.docs);
 
     } catch (error) {
@@ -33,7 +33,7 @@ container.addEventListener('click', (e) => {
 });
 
 const printBooks = (books) => {
-    console.log(books);
+//    console.log(books);
     books.forEach((item) => {
     const div = document.createElement("div");
     div.classList.add('book');
