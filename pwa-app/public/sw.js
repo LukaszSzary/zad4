@@ -26,10 +26,18 @@ self.addEventListener("activate", event => {
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request).then(function(response) {
-
-            return response || fetch(event.request);
-
+        fetch(event.request)
+        .then((response) => {
+          // add to cache
+          const responseClone = response.clone();
+          caches.open('my-cache').then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+          return response;
+        })
+        .catch(() => {
+          // if offline
+          return caches.match(event.request);
         })
     );
 });
